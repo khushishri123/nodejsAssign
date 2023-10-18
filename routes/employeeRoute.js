@@ -3,6 +3,9 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
-router.route("/").post(employeeController.createEmployee);
+router
+  .route("/")
+  .post(employeeController.createEmployee)
+  .get(employeeController.getAllEmployees);
 
 module.exports = router;
