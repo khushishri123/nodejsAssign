@@ -66,3 +66,19 @@ exports.updateEmployee = async (req, res) => {
     });
   }
 };
+
+exports.deleteEmployee = async (req, res) => {
+  try {
+    await Employee.findByIdAndDelete(req.params.id);
+
+    res.status(204).json({
+      status: "success",
+      employee: null,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      error: `${err}`,
+    });
+  }
+};
