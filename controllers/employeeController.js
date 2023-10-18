@@ -32,3 +32,19 @@ exports.getAllEmployees = async (req, res) => {
     });
   }
 };
+
+exports.getEmployee = async (req, res) => {
+  try {
+    const employee = await Employee.findById(req.params.id);
+    res.status(200).json({
+      status: "success",
+      employee: { employee },
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      error: `${err}`,
+    });
+  }
+};
+
