@@ -17,3 +17,18 @@ exports.createEmployee = async (req, res) => {
     });
   }
 };
+
+exports.getAllEmployees = async (req, res) => {
+  try {
+    const employees = await Employee.find();
+    res.status(200).json({
+      status: "success",
+      employees: { employees },
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      error: `${err}`,
+    });
+  }
+};
