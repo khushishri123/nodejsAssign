@@ -1,8 +1,8 @@
 // this will handle all express related code
 const express = require("express");
+const router = require("./routes/employeeRoute");
 const app = express();
 app.use(express.json());
-app.get("/", () => {
-  console.log("Got handled ");
-});
+
+app.use("/api/v1/employees", router);
 module.exports = app;
