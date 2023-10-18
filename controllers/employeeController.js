@@ -48,3 +48,21 @@ exports.getEmployee = async (req, res) => {
   }
 };
 
+exports.updateEmployee = async (req, res) => {
+  try {
+    const employee = await Employee.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    res.status(200).json({
+      status: "success",
+      employee: { employee },
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      error: `${err}`,
+    });
+  }
+};
